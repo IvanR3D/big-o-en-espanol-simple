@@ -1,208 +1,209 @@
-# Algorithms & Big O Notation in Plain English
+# Algoritmos y Notación Big O en Español Sencillo
 
-by Pavan Katepalli
+Escrito en inglés por [Pavan Katepalli](https://github.com/pavankat)
+[Ver versión original en inglés](https://github.com/pavankat/big-o-in-plain-english)
 
-Edited by 
+Traducir al español por [Iván R. Artiles](https://github.com/ivanr3d)
 
+Editado en inglés por 
 [Nick Bartlett](https://github.com/tteltrab)
-
 [Nick West](https://github.com/njwest)
 
 
-## What are algorithms?
+## ¿Qué son los algoritmos?
 
-Algorithms are basically functions.
+Los algoritmos son básicamente funciones.
 
-Functions that are algorithms:
+Las funciones que son algoritmos:
 
-1. take in arguments
+1. reciben argumentos
 
-2. explicitly return values
+2. devuelven valores explícitamente
 
-#### 1.1 Example of an algorithm
+#### 1.1 Ejemplo de un algoritmo
 
-Algorithm that counts the number of vowels in a word and returns the count:
+Algoritmo que cuenta el número de vocales en una palabra y devuelve el conteo:
 
 ```js
-function countVowels(word) {
-    var vowels = ['a', 'i', 'e', 'o', 'u'];
-    var count = 0;
-		for (var i = 0; i < word.length; i++) {
-        for (var j = 0; j < vowels.length; j++) {
-            if (word[i] === vowels[j]) {
-                count++;
+function contarVocales(palabra) {
+    var vocales = ['a', 'i', 'e', 'o', 'u'];
+    var conteo = 0;
+		for (var i = 0; i < palabra.length; i++) {
+        for (var j = 0; j < vocales.length; j++) {
+            if (palabra[i] === vocales[j]) {
+                conteo++;
             }
         }
     }
-    return count;
+    return conteo;
 }
 
 ```
 
-## When are functions not algorithms?
-When you write a function it may or may not
+## ¿Cuándo las funciones no son algoritmos?
+Cuando escribes una función, puede que
 
-* have arguments
+* no tenga argumentos
 
-* return a value
+* no devuelva un valor
 
-Functions that don't take arguments or return a value are usually used to dry up repetitive code, print something to the screen, or serve as an argument to be executed later. These types of functions typically aren't referred to as algorithms.
+Las funciones que no reciben argumentos ni devuelven un valor se suelen utilizar para evitar código repetitivo, imprimir algo en la pantalla, o servir como argumento a ser ejecutado más tarde. Este tipo de funciones típicamente no se consideran algoritmos.
 
-#### 1.2 Example of a function that is not an algorithm
+#### 1.2 Ejemplo de una función que no es un algoritmo
 
-An anonymous function that gets passed to jQuery's `on` function. 
+Una función anónima que se pasa a la función `on` de jQuery. 
 
 ```js
 $('button').on('click', function(){ 
-	alert('hi') 
+	alert('hola') 
 });
 ```
 
-#### 1.3 Example of a function that is not an algorithm
+#### 1.3 Ejemplo de una función que no es un algoritmo
 
-This function has no arguments, no return
+Esta función no tiene argumentos, ni retorno
 
 ```js
-function clearDiv(){
+function limpiarDiv(){
 	$('#div').html("");
 }
 ```
-#### 1.4 Example of a function that is not an algorithm
+#### 1.4 Ejemplo de una función que no es un algoritmo
 
-This function has an argument, but no return
+Esta función tiene un argumento, pero no tiene retorno
 
 ```js
-function clearDiv(text){
-	$('#div').text(text);
+function limpiarDiv(texto){
+	$('#div').text(texto);
 }
 ```
 
-## What is Big O?
+## ¿Qué es Big O?
 
-Big O is short for Big O Notiation.
+Big O es la abreviatura de Notación Big O.
 
-Big O is how programmers talk about scalability of algorithms.
+Big O es la forma en que los programadores hablan sobre la escalabilidad de los algoritmos.
 
-An algorithm's Big O Notation is determined by how long the algorithm takes to return output in the **worst case scenario**.
+La Notación Big O de un algoritmo se determina por cuánto tiempo tarda el algoritmo en devolver una salida en el **peor escenario posible**.
 
-The math term for the **worst case scenario** is **"upper bound"**.
+El término matemático para el **peor escenario posible** es **"límite superior"**.
 
-## How do you say O(n)
+## ¿Cómo se pronuncia O(n)?
 
-O(n) reads as "Order of N" or short for "O of N".
+O(n) se pronuncia como "Orden de N" o simplemente "O de N".
 
-The O function is the Order function.
+La función O es la función de Orden.
 
-## Why is it called Big O?
+## ¿Por qué se llama Big O?
 
-Because we're dealing with orders of magnitude. `O` is used because the growth rate of a function is also referred to as the **"order of the function"**.
+Porque estamos tratando con órdenes de magnitud. Se usa `O` porque la tasa de crecimiento de una función también se refiere como el **"orden de la función"**.
 
-## Why is Big O important?
+## ¿Por qué es importante Big O?
 
-Understanding the Big O of algorithms will
-* get you into the mindset of coding for efficiency. Ex: "I have to change this algorithm because it's O(n!)!"
-* help you talk code to other developers. Ex: "Don't worry, I changed up the algorithm so it not O(n^2). It's O(n) now."
-* help you for interviews. You will be able to talk about efficiency of algorithms that you whiteboard. Ex: "What I just coded out is O(n^2)."
+Entender la notación Big O de los algoritmos te permitirá:
+* Ponerte en la mentalidad de programar con eficiencia. Ej: "¡Tengo que cambiar este algoritmo porque es O(n!)!"
+* Ayudarte a hablar de código con otros desarrolladores. Ej: "No te preocupes, cambié el algoritmo para que no sea O(n^2). Ahora es O(n)."
+* Ayudarte en entrevistas. Podrás hablar sobre la eficiencia de los algoritmos que escribas en una pizarra. Ej: "Lo que acabo de codificar es O(n^2)."
 
-## Dive into O(1)
+## Profundizando en O(1)
 
-#### Example 2.1
+#### Ejemplo 2.1
 
 ```js
-function returnItem(item){
-	return item;
+function devolverElemento(elemento){
+	return elemento;
 }
 ```
 
-`returnItem` is a pointless function, but bear with me.
+`devolverElemento` es una función sin sentido, pero sigue conmigo.
 
 ```js
-returnItem(2);
+devolverElemento(2);
 ```
 
-`returnItem`'s Big O is constant time. No matter what we pass to `returnItem`, the algorithm will go through one unit of work.
+El Big O de `devolverElemento` es tiempo constante. No importa qué le pasemos a `devolverElemento`, el algoritmo realizará una unidad de trabajo.
 
-The "complexity" of this function is `O(1)`.
+La "complejidad" de esta función es `O(1)`.
 
-If you want to graph `O(1)` then you would set y equal to 1 and graph it.
+Si quisieras graficar `O(1)`, deberías establecer y igual a 1 y graficarlo.
 
 **y = 1**
 
 ![o(1)](o_1__plot.png)
 
-Notice that the further right of the horizontal axis (x axis) you go, the vertical axis (y axis) stays the same.
+Nota que cuanto más a la derecha de la horizontal (eje x) vayas, el eje vertical (eje y) permanece igual.
 
-## Dive into O(n)
+## Profundizando en O(n)
 
-#### Example 2.2
+#### Ejemplo 2.2
 ```js
-function itemInList(check, list){
-	for (var i = 0; i < list.length; i++){
-		if (list[i] === check) return true;
+function elementoEnLista(verificar, lista){
+	for (var i = 0; i < lista.length; i++){
+		if (lista[i] === verificar) return true;
 	}
 	return false;
 }
 ```
 
-This will run pretty quick:
+Esto se ejecutará bastante rápido:
 
 ```js
-itemInList(2, [1,2,3]);
+elementoEnLista(2, [1,2,3]);
 ```
 
-The "complexity" of `itemInList` is `O(n)`.
+La "complejidad" de `elementoEnLista` es `O(n)`.
 
-This means that it's a linear graph.
+Esto significa que es un gráfico lineal.
 
-For `itemInList`, if the length of the array is 3; **worst case** it'll take 3 units of work.
+Para `elementoEnLista`, si la longitud del array es 3; en el **peor caso** tomará 3 unidades de trabajo.
 
-Sure, in the best case it'll take 1 unit of work, but Big O Notation isn't about the best case scenario, it's about the **worst case scenario**.
+Claro, en el mejor caso tomará 1 unidad de trabajo, pero la Notación Big O no trata sobre el mejor escenario, trata sobre el **peor escenario**.
 
-If you want to graph `O(n)` then you would replace the `n` with a `x` and set it equal to a `y`.
+Si quisieras graficar `O(n)` entonces reemplazarías la `n` con una `x` y la igualarías a una `y`.
 
 **y = x**
 
 ![o(n)](o_n__plot.png)
 
-Notice that the further right of the horizontal axis (x axis) you go, the vertical axis (y axis) goes up too.
+Nota que cuanto más a la derecha de la horizontal (eje x) vayas, el eje vertical (eje y) también sube.
 
-## Dive into O(n^2)
+## Profundizando en O(n^2)
 
-#### Example 2.3
+#### Ejemplo 2.3
 ```js
-function allCombos(list){
-	var results = [];
-	for (var i = 0; i < results.length; i++){
-		for (var j = 0; j < results.length; j++){
-			results.push([i, j]);
+function todasLasCombos(lista){
+	var resultados = [];
+	for (var i = 0; i < lista.length; i++){
+		for (var j = 0; j < lista.length; j++){
+			resultados.push([i, j]);
 		}
 	}
 }
 ```
 
-If we do `allCombos([1,2,3])` we'd get back `[(1,1) (1,2), (1,3), (2, 1), (2, 2), (2, 3), (3, 1), (3, 2), (3, 3)]`.
+Si hacemos `todasLasCombos([1,2,3])` obtendremos `[(1,1), (1,2), (1,3), (2,1), (2,2), (2,3), (3,1), (3,2), (3,3)]`.
 
-The "complexity" of `allCombos` is `O(n^2)`.
+La "complejidad" de `todasLasCombos` es `O(n^2)`.
 
-The length of the list argument of `allCombos` is the `n` in `O(n^2)`.
+La longitud del argumento lista de `todasLasCombos` es la `n` en `O(n^2)`.
 
-allCombos([1]) -> [[1,1]]. One unit of work.  1^2 = 1
-allCombos([1,2]) -> [[1,1], [1,2], [2,1], [2,2]]. Four units of work. 2^2 = 4
+todasLasCombos([1]) -> [[1,1]]. Una unidad de trabajo.  1^2 = 1  
+todasLasCombos([1,2]) -> [[1,1], [1,2], [2,1], [2,2]]. Cuatro unidades de trabajo. 2^2 = 4
 
-So n * n is n^2.
+Así que n * n es n^2.
 
-## Comparison of O(1), O(n), O(n^2)
+## Comparación de O(1), O(n), O(n^2)
 
-Notice that the further right of the horizontal axis (x axis) you go, the vertical axis (y axis) goes up fastest for `O(n^2)`, slower for `O(n)` and constant for `O(1)`.
+Nota que cuanto más a la derecha de la horizontal (eje x) vayas, el eje vertical (eje y) sube más rápido para `O(n^2)`, más lento para `O(n)` y constante para `O(1)`.
 
-This means that `O(n^2)` runs slower than `O(n)`, which runs slower than `O(1)`.
+Esto significa que `O(n^2)` se ejecuta más lento que `O(n)`, que se ejecuta más lento que `O(1)`.
 
-![comparison](runtime_comparison.png)
+![comparación](runtime_comparison.png)
 
-## O(1) vs O(n) vs O(n^2) explained without code
+## O(1) vs O(n) vs O(n^2) explicado sin código
 
 #### O(1)
-Consider single-digit addition with a pencil and paper. The kind you learned when you were young.
+Considera una suma de un solo dígito con lápiz y papel. Del tipo que aprendiste cuando eras joven.
 
 ```
 5 + 5 = 10
@@ -216,13 +217,13 @@ Consider single-digit addition with a pencil and paper. The kind you learned whe
 6 + 7 = 13
 ```
 
-Each of those different problems took the same # of operations to complete (or the same amount of units of work to complete). You take one number and add it to another. Done.
+Cada uno de esos problemas tomó la misma cantidad de operaciones para completarse (o la misma cantidad de unidades de trabajo). Tomas un número y lo sumas a otro. Listo.
 
-Because it's always the same units of work to complete, no matter what the problem, the Big O is constant, this is an example of `O(1)`.
+Como siempre se requiere la misma cantidad de unidades de trabajo para completarse, sin importar el problema, el Big O es constante; este es un ejemplo de `O(1)`.
 
 #### O(n)
 
-Consider multi-digit addition with a pencil and paper.
+Considera una suma de varios dígitos con lápiz y papel.
 
 ```
 55 + 72 = 127
@@ -234,75 +235,75 @@ Consider multi-digit addition with a pencil and paper.
 4999 + 56 = 5055
 ```
 
-Notice how the number of operations (or the amount of units of work to complete) goes up as the number of digits go up.
+Observa cómo el número de operaciones (o la cantidad de unidades de trabajo necesarias para completar la operación) aumenta a medida que aumenta el número de dígitos.
 
-The number of operations directly correlate (are one to one) with the number of digits of the biggest number being added.
+El número de operaciones se correlaciona directamente (es uno a uno) con el número de dígitos del número más grande que se está sumando.
 
-This would take worst case `O(n)` units of work.
+Esto tomaría, en el peor de los casos, `O(n)` unidades de trabajo.
 
 #### O(n^2)
 
-Now, consider multi-digit multiplication with pencil and paper.
+Ahora, considera una multiplicación de varios dígitos con lápiz y papel.
 
 ```
 55538 * 92338 = 5128267844
 ```
 
-This is much harder to do than the previous two asks.
+Esto es mucho más difícil de hacer que los dos ejemplos anteriores.
 
-Each digit of the bottom number has to be multiplied by each digit in the top number.
+Cada dígito del número inferior debe multiplicarse por cada dígito del número superior.
 
-If you were multiplying 100 digit numbers by each other then it would take 10,000 mathematical operations to complete (units of work to complete).
+Si estuvieras multiplicando números de 100 dígitos entre sí, tomaría 10,000 operaciones matemáticas para completarlo (unidades de trabajo para completarlo).
 
-This would take worst case `O(n^2)` units of work to complete.
+Esto tomaría, en el peor de los casos, `O(n^2)` unidades de trabajo para completarse.
 
-## Dive into O(log(n))
+## Profundizando en O(log(n))
 
 O(1) < O(log(n)) < O(n) < O(n^2)
 
 ![o(log n)](o_logn.gif)
 
-#### What does an algorithm look like that has a Big O of O(log(n))?
+#### ¿Cómo es un algoritmo con una notación Big O de O(log(n))?
 
-The choice of the next element on which to perform some action is one of several possibilities, and only one will need to be chosen.
+La elección del siguiente elemento sobre el cual realizar alguna acción es una de varias posibilidades, y solo una necesitará ser elegida.
 
-#### Ex. Looking up people in a phone book is O(log(n))
+#### Ejemplo: Buscar personas en una guía telefónica es O(log(n))
 
-You don't need to check every person in the phone book to find the right one; instead, you can simply divide-and-conquer, and you only need to explore a tiny fraction of the entire space before you eventually find someone's phone number.
+No necesitas revisar a todas las personas en la guía telefónica para encontrar la correcta; en su lugar, puedes aplicar un enfoque de dividir y conquistar, y solo necesitas explorar una pequeña fracción del espacio total antes de encontrar finalmente el número de teléfono de alguien.
 
-Of course, a bigger phone book will still take you a longer time, but it won't grow as quickly as the proportional increase in the additional size.
+Por supuesto, una guía telefónica más grande aún te llevará más tiempo, pero no crecerá tan rápido como el aumento proporcional en el tamaño adicional.
 
-#### Ex. an algorithm that has a Big O of O(log(n))
+#### Ejemplo de un algoritmo que tiene un Big O de O(log(n))
 
 ```js
-function twoDivides(x){
-	var count = 0;
+function divideEntreDos(x){
+	var contador = 0;
 	while (parseInt(x) > 1) {
 		x = x / 2;
-		count = count + 1;
+		contador = contador + 1;
 	}
-	return count;
+	return contador;
 }
 ```
 
-##### Calculating the Big O of algorithm above
+##### Calculando el Big O del algoritmo anterior
 
-**without math**
+**sin matemáticas**
 
-Often you don't need math to figure out what the Big-O of an algorithm is. You can simply use your intuition.
+A menudo no necesitas matemáticas para averiguar cuál es el Big O de un algoritmo. Simplemente puedes usar tu intuición.
 
-You look at how many units of work the algorithm has to do as the input grows and match that up to the correct Big O.
+Observa cuántas unidades de trabajo tiene que hacer el algoritmo a medida que el tamaño de entrada crece y asóciala con la notación Big O correcta.
 
-Not counting the return or the variable declaration:  
-twoDivides(2) = 1. The operations for each step of the loop would be x = 2/1 (for the division) & count = 0 + 1 (for the count); so 2 total.  
-twoDivides(4) = 2. The operations would be `x = 4/2` & `count = 0 + 1`, `2/1` & `1 + 1`; so 4 total.  
-twoDivides(8) = 3. The operations would be `x = 8/2` & `count = 0 + 1`, `4/2` & `1 + 1`, `2/2` & `2 + 1`; so 6 total.  
-twoDivides(16) = 4. The operations would be `x = 16/2` & `count = 0 + 1`, `8/2` & `1 + 1`, `4/2` & `2 + 1`, `2/2` & `3 + 1`, so 8 total.  
-twoDivides(32) = 5. The operations would be `x = 32/2` & `count = 0 + 1`, `16/2` & `1 + 1`, `8/2` & `2 + 1`, `4/2` & `3 + 1`, `2/2` & `4 + 1`; so 10 total.  
+Sin contar la declaración de variables o el `return`:  
+divideEntreDos(2) = 1. Las operaciones en cada paso del ciclo serían x = 2/1 (para la división) y contador = 0 + 1 (para el conteo); por lo que son 2 en total.  
+divideEntreDos(4) = 2. Las operaciones serían `x = 4/2` y `contador = 0 + 1`, `2/1` y `1 + 1`; por lo que son 4 en total.  
+divideEntreDos(8) = 3. Las operaciones serían `x = 8/2` y `contador = 0 + 1`, `4/2` y `1 + 1`, `2/2` y `2 + 1`; por lo que son 6 en total.  
+divideEntreDos(16) = 4. Las operaciones serían `x = 16/2` y `contador = 0 + 1`, `8/2` y `1 + 1`, `4/2` y `2 + 1`, `2/2` y `3 + 1`; por lo que son 8 en total.  
+divideEntreDos(32) = 5. Las operaciones serían `x = 32/2` y `contador = 0 + 1`, `16/2` y `1 + 1`, `8/2` y `2 + 1`, `4/2` y `3 + 1`, `2/2` y `4 + 1`; por lo que son 10 en total.  
 
-The "complexity" of twoDivides is `O(log(n))`.  
+La "complejidad" de divideEntreDos es `O(log(n))`.  
 
-n    |  operations
+n    |  operaciones
 -----|---------------
 2    |  2
 4    |  4
@@ -312,23 +313,23 @@ n    |  operations
 ...  | ...
 n    | 2 * log(n)
 
-`log(n)` here essentially means "the number of times we can divide `n` by 2".
+`log(n)` aquí esencialmente significa "la cantidad de veces que podemos dividir `n` entre 2".
 
-**Side note:** When writing Big O Notation, the leading "2" would be ignored - it doesn't change significantly the asymptotic behavior of the function for large values of `n`. Thus, we can see `O(2 * log(n))` is equivalent to `O(log(n))`. In general, when writing Big O notation you only care about the most significant portion of complexity (even `2n^2 + 2n` would be written as `O(n^2)`.
+**Nota:** Cuando escribes la notación Big O, se ignora el "2" inicial, ya que no cambia significativamente el comportamiento asintótico de la función para valores grandes de `n`. Así, podemos ver que `O(2 * log(n))` es equivalente a `O(log(n))`. En general, al escribir la notación Big O solo te preocupas por la porción más significativa de la complejidad (incluso `2n^2 + 2n` se escribiría como `O(n^2)`).
     
-In this case (`log(n)`), The size of the number is the `n`. We can see that the number of operations isn't constant, but doesn't grow linearly (and grows more slowly as the `n` increases).
+En este caso (`log(n)`), el tamaño del número es la `n`. Podemos ver que el número de operaciones no es constante, pero tampoco crece linealmente (y crece más lentamente a medida que `n` aumenta).
 
-**general case, with math** 
+**caso general, con matemáticas** 
 
-Iteration |   x
+Iteración |   x
 ----------|--------
-0         |  x (this is the same thing as x/1)
+0         |  x (esto es lo mismo que x/1)
 1         |  x/2
 2         |  x/4
 ...       |  ...
 k         |  x/2^k 
 
-2^k = x → Applying log to both sides → k = log(x)
+2^k = x → Aplicando logaritmo en ambos lados → k = log(x)
 
 log(2^k) = log(x)
 
@@ -336,28 +337,28 @@ k*log(2) = log(x)
 
 k = log(x)/log(2)
 
-k approximately equals log(x)
+k es aproximadamente igual a log(x)
 
-## Dive into O(n log n)
+## Profundizando en O(n log n)
 
 O(1) < O(log(n)) < O(n) < O(n log(n)) < O(n^2)
 
 ```js
-// assume that n is an integer
+// asume que n es un número entero
 function nlogn(n){
-	var results = [];
-	for (var i = 0; i < n; i++){ // this loop is executed n times, so O(n)
-	    for (var j = n; j > 0; j = parseInt(j/2)){ // this loop is executed log(n) times, so O(logn)
-	    	results.push(j);
+	var resultados = [];
+	for (var i = 0; i < n; i++){ // este bucle se ejecuta n veces, por lo tanto es O(n)
+	    for (var j = n; j > 0; j = parseInt(j/2)){ // este bucle se ejecuta log(n) veces, por lo tanto es O(logn)
+	    	resultados.push(j);
 	    }
 	}
-	return results;
+	return resultados;
 }
 ```
 
-For adjacent for loops you would add the runtimes together, e.g. `O(n + m)`. For nested for loops, you multiply them, e.g. `O(n*m)`, or in this case `O(nlogn)`.
+Para bucles for adyacentes, sumarías los tiempos de ejecución, por ejemplo, `O(n + m)`. Para bucles for anidados, los multiplicas, por ejemplo, `O(n*m)`, o en este caso `O(nlogn)`.
 
-This would result in 
+Esto resultaría en:
 
 ```
 nlogn(3)
@@ -369,21 +370,21 @@ nlogn(4)
 [4, 2, 1, 4, 2, 1, 4, 2, 1, 4, 2, 1]
 ```
 
-## Dive into O(2^n)
+## Profundizando en O(2^n)
 
-Algorithms with a Big O of 2^n are usually recursive.
+Los algoritmos con un Big O de 2^n suelen ser recursivos.
 
 ```js
-// assume number is an integer
+// asume que number es un número entero
 function fib(number) {
  if (number <= 1) return number;
  return fib(number - 2) + fib(number - 1);
 }
 ```
 
-`O(2^n)` occurs when a problem of size `n` requires solving two smaller problems of size `n-1` (in fibonacci this is close to true, it's just two problems one of size `n-1` and the other of size `n-2`. In essence, you're doubling the number of problems you need to solve every time n increases.
+`O(2^n)` ocurre cuando un problema de tamaño `n` requiere resolver dos problemas más pequeños de tamaño `n-1` (en fibonacci esto es casi cierto, es solo que son dos problemas, uno de tamaño `n-1` y el otro de tamaño `n-2`). En esencia, estás duplicando el número de problemas que necesitas resolver cada vez que `n` aumenta.
 
-Assume our algorithm takes two operations, and that solving a problem of size `n` requires solving two problems of size `n-1`. Then, the number of operations for increasing values of `n` are:
+Supongamos que nuestro algoritmo requiere dos operaciones, y que resolver un problema de tamaño `n` requiere resolver dos problemas de tamaño `n-1`. Entonces, el número de operaciones para valores crecientes de `n` son:
 
 n   |  ops(n)
 --- | ---
@@ -394,34 +395,34 @@ n   |  ops(n)
 ...
 k   | (k-1) + (k-1) = 2(k-1) = 2((k-2) + (k-2)) = 4(k-2) = 8(k-3) = ... = 2^(k-1)(2) = 2^k
 
-## Dive into O(n!)
+## Profundizando en O(n!)
 
-Any algorithm that calculates all permutations of a given array is `O(n!)`. Factorial is the number you get if you multiply every number from 1 to `n`.
+Cualquier algoritmo que calcule todas las permutaciones de un array dado es `O(n!)`. Factorial es el número que obtienes si multiplicas cada número desde 1 hasta `n`.
 
-Imagine you have an array of words, and you want to return all possible combinations of those words.
+Imagina que tienes un array de palabras y quieres devolver todas las combinaciones posibles de esas palabras.
 
-So given
+Entonces, dado
 ```
-['apple', 'bear', 'limp bizkit']
+['manzana', 'oso', 'limp bizkit']
 ```
 
-The algorithm would return an array of 6 arrays. Like this:
+El algoritmo devolvería un array de 6 arrays. Como este:
 ```
 [
-	['apple', 'bear', 'limp bizkit'],
-	['apple', 'limp bizkit', 'bear'],
-	['bear', 'limp bizkit', 'apple'],
-	['bear', 'apple', 'limp bizkit'],
-	['limp bizkit', 'bear', 'apple'],
-	['limp bizkit', 'apple', 'bear'],
+	['manzana', 'oso', 'limp bizkit'],
+	['manzana', 'limp bizkit', 'oso'],
+	['oso', 'limp bizkit', 'manzana'],
+	['oso', 'manzana', 'limp bizkit'],
+	['limp bizkit', 'oso', 'manzana'],
+	['limp bizkit', 'manzana', 'oso'],
 ]
 ```
-Writing an algorithm that would do that would be `O(n!)`. `n` here is the length of the array, so 3! = 3 * 2 * 1 = 6. 
+Escribir un algoritmo que haga eso sería `O(n!)`. `n` aquí es la longitud del array, entonces 3! = 3 * 2 * 1 = 6. 
 
-Another example:
+Otro ejemplo:
 
 ```js
-// assume n is an integer
+// asume que n es un número entero
 function nFactorial(n) {
   for (var i = 0; i < n; i++) {
     return nFactorial(n - 1);
@@ -429,59 +430,59 @@ function nFactorial(n) {
 }
 ```
 
-This runs the `nFactorial` function `n-1` times for an input `n`. So, you get `n*nFactorial(n-1)`.
+Esto ejecuta la función `nFactorial` `n-1` veces para una entrada `n`. Por lo tanto, obtienes `n*nFactorial(n-1)`.
 
 `n*f(n-1) = n*(n-1)*f(n-2) = ... = n*(n-1)*(n-2)*...*1*f(1) = n!`.
 
-## Big O can be misleading
+## Big O puede ser engañoso
 
-Big-O notation is an estimate and is only useful for large values of n.
+La notación Big-O es una estimación y solo es útil para valores grandes de `n`.
 
-#### insertion sort vs merge sort
+#### ordenamiento por inserción vs ordenamiento por mezcla
 
-The worst-case running time for the **insertion sort algorithm is O(n^2)**.
+El tiempo de ejecución en el peor de los casos para **el algoritmo de ordenamiento por inserción es O(n^2)**.
 
-Relative to Big O that is worse than the running time for **merge sort, which is O(n log n)**.
+En relación con Big O, eso es peor que el tiempo de ejecución para **ordenamiento por mezcla, que es O(n log n)**.
 
-But for small amounts of data (when n is small), insertion sort is actually faster, especially if the array is partially sorted already!
+¡Pero para pequeñas cantidades de datos (cuando `n` es pequeño), el ordenamiento por inserción es en realidad más rápido, especialmente si el array ya está parcialmente ordenado!
 
-Big O is useful when comparing two algorithms to figure out which one runs faster for when n is large.
+Big O es útil cuando se comparan dos algoritmos para determinar cuál es más rápido cuando `n` es grande.
 
-If the amount of data (n) is relatively small, then even a slow algorithm will be fast enough for practical use.
+Si la cantidad de datos (`n`) es relativamente pequeña, entonces incluso un algoritmo lento será lo suficientemente rápido para un uso práctico.
 
-#### Other concerns
+#### Otras consideraciones
 
-The average runtime of algorithms can vary significantly for differing inputs, but Big O notation only indicates the worst case scenario. Thus, you can one algorithm which runs `logn` in 99% of cases, but 1% of the time takes `n!` time, and another which solves the same problem but always runs `n^2`. Thus, Big O notation doesn't give the whole picture of runtime efficiency. This is particularly notable when looking at soting algorithms, which have varying best, worst, and average case runtimes. Most discussions surrounding runtime analysis do, however, focus on Big O and worst-case rintime.
+El tiempo de ejecución promedio de los algoritmos puede variar significativamente según las diferentes entradas, pero la notación Big O solo indica el peor escenario. Por lo tanto, puedes tener un algoritmo que se ejecute en `logn` en el 99% de los casos, pero en el 1% del tiempo toma `n!`. Y otro que resuelve el mismo problema pero siempre se ejecuta en `n^2`. Así, la notación Big O no da una imagen completa de la eficiencia en tiempo de ejecución. Esto es particularmente notable cuando se observan los algoritmos de ordenamiento, que tienen diferentes tiempos de ejecución en el mejor, peor y promedio de los casos. Sin embargo, la mayoría de las discusiones en torno al análisis de tiempo de ejecución se centran en Big O y el tiempo de ejecución en el peor de los casos.
 
-## Other Big O Categories from fastest to slowest
+## Otras categorías de Big O de más rápida a más lenta
 
-Big-O | Name | Description
+Big-O | Nombre | Descripción
 ------| ---- | -----------
-**O(1)** | constant | **This is the best.** The algorithm always takes the same amount of time, regardless of how much data there is. In other words, the number of units of work it takes the algorithm to complete is independent of the size of the input. Example: looking up an element of an array by its index.
-**O(log n)** | logarithmic | **Pretty great.** These kinds of algorithms remove a percentage of the amount of data to sift through with each iteration. If you have 100 items, it takes about 7 steps to find the answer. With 1,000 items, it takes 10 steps. And 1,000,000 items only take 20 steps. This is super fast even for large amounts of data. Example: binary search (sorted array search).
-**O(n)** | linear | **Good performance.** If you have 100 items, this does 100 units of work. This is usually the case for a loop. If you double the size of n, then the algorithm does 2 * n units of work. Example: unsorted array search.
-**O(n log n)** | "linearithmic" | **Decent performance.** This is slightly worse than linear but not too bad. Example: mergesort and other "fast" sorting algorithms.
-**O(n^2)** | quadratic | **Kinda slow.** If you have 100 items, this does 100^2 = 10,000 units of work. Doubling the number of items makes it four times slower (because 2 squared equals 4). Example: a double for loop -> you have to look at every pair of input elements.
-**O(n^3)** | cubic | **Poor performance.** If you have 100 items, this does 100^3 = 1,000,000 units of work. Doubling the input size makes it eight times slower. Example: matrix multiplication. Or, you're looking at every pair of inputs but the operation you do requires looking at all of the inputs again
-**O(2^n)** | exponential | **Very poor performance.** You want to avoid these kinds of algorithms, but sometimes you have no choice. Adding just one bit to the input doubles the running time. Example: brute-force guessing results of a sequence of `n` coin flips.
-**O(n!)** | factorial | **Intolerably slow.** It literally takes a million years to do anything. Example: you need to consider every possible subset of your inputs. Check out the traveling salesperson problem - brute forcing a solution for it is `n!`.
+**O(1)** | constante | **Esto es lo mejor.** El algoritmo siempre toma la misma cantidad de tiempo, sin importar cuántos datos haya. En otras palabras, el número de unidades de trabajo que toma completar el algoritmo es independiente del tamaño de la entrada. Ejemplo: buscar un elemento en un array por su índice.
+**O(log n)** | logarítmica | **Bastante bien.** Este tipo de algoritmos eliminan un porcentaje de la cantidad de datos a revisar con cada iteración. Si tienes 100 elementos, toma alrededor de 7 pasos encontrar la respuesta. Con 1,000 elementos, toma 10 pasos. Y con 1,000,000 elementos solo toma 20 pasos. Esto es súper rápido, incluso para grandes cantidades de datos. Ejemplo: búsqueda binaria (en un array ordenado).
+**O(n)** | lineal | **Buen rendimiento.** Si tienes 100 elementos, hace 100 unidades de trabajo. Esto suele ser el caso de un bucle. Si duplicas el tamaño de `n`, entonces el algoritmo hace 2 * n unidades de trabajo. Ejemplo: búsqueda en un array no ordenado.
+**O(n log n)** | "lineal-logarítmica" | **Rendimiento decente.** Esto es un poco peor que el rendimiento lineal, pero no está tan mal. Ejemplo: mergesort y otros algoritmos de ordenamiento "rápidos".
+**O(n^2)** | cuadrática | **Algo lenta.** Si tienes 100 elementos, hace 100^2 = 10,000 unidades de trabajo. Duplicar el número de elementos lo hace cuatro veces más lento (porque 2 al cuadrado es igual a 4). Ejemplo: un doble bucle for -> tienes que revisar cada par de elementos de entrada.
+**O(n^3)** | cúbica | **Mal rendimiento.** Si tienes 100 elementos, hace 100^3 = 1,000,000 unidades de trabajo. Duplicar el tamaño de la entrada lo hace ocho veces más lento. Ejemplo: multiplicación de matrices. O, estás mirando cada par de entradas, pero la operación que haces requiere mirar todas las entradas nuevamente.
+**O(2^n)** | exponencial | **Muy mal rendimiento.** Quieres evitar este tipo de algoritmos, pero a veces no tienes otra opción. Agregar solo un bit a la entrada duplica el tiempo de ejecución. Ejemplo: adivinanza por fuerza bruta de los resultados de una secuencia de `n` lanzamientos de moneda.
+**O(n!)** | factorial | **Intolerablemente lento.** Literalmente, toma millones de años hacer algo. Ejemplo: necesitas considerar todos los subconjuntos posibles de tus entradas. Echa un vistazo al problema del vendedor viajero: forzar una solución para este problema es `n!`.
 
 ![o(n)](most-of-them.png)
 
-## another chart
+## otro gráfico
 
-Big-O | computations for 10 things | computations for 100 things
+Big-O | cálculos para 10 elementos | cálculos para 100 elementos
 ------| ---- | -----------
 O(1)        |   1                         |     1
 O(log(n))   |   3                         |     7
 O(n)        |  10                         |   100
 O(n log(n)) |  30                         |   700
 O(n^2)      | 100                         | 10000
-O(n^3)      | 1000                         | 1000000
-O(2^n)      | 1024                         | 2^100
-O(n!)      | 3628800                         | 100! -> mathematically this is the product of (100 * 99 * 98...)
+O(n^3)      | 1000                        | 1000000
+O(2^n)      | 1024                        | 2^100
+O(n!)      | 3628800                      | 100! -> matemáticamente este es el producto de (100 * 99 * 98...)
 
-## and another
+## y otro más
 
 n   | logn | n  | nlogn | n^2 | 2^n | n!
 --- | ---  |--- | ---   |---  | --- | ---
@@ -492,10 +493,9 @@ n   | logn | n  | nlogn | n^2 | 2^n | n!
 5   | 1.6  | 5  | 8     | 25  | 32  | 120
 10  | 2.3  | 10 | 23    | 100 | 1024| 3628800 
 
+## Examen rápido
 
-## Pop Quiz
-
-What's the Big O of each of these algorithms?
+¿Cuál es el Big O de cada uno de estos algoritmos?
 
 a)
 
@@ -511,10 +511,10 @@ function countUpA(n){
     }
     return count;
 }
-
 ```
 
 b)
+
 ```js
 function countUpB(n){
 	var count = 0;
@@ -527,10 +527,10 @@ function countUpB(n){
 	}
 	return count;
 }
-
 ```
 
 c)
+
 ```js
 function countUpC(n){
 	var count = n;
@@ -541,11 +541,10 @@ function countUpC(n){
 	        }
 	    }
 	}
-
 	return count;
 }
-
 ```
+
 d)
 
 ```js
@@ -561,7 +560,6 @@ function countUp(n){
 	}
 	return count;
 }
-
 ```
 
 e)
@@ -576,48 +574,44 @@ function countUpE(n){
 	}
 	return count;
 }
-
 ```
 
-
-## Answers to Quiz
+## Respuestas al Examen Rápido
 
 a) O(n^3)
 
-triple for loops, as the input grows, the units of work grows at a cubic pace.
+Bucle for triple; a medida que la entrada crece, las unidades de trabajo crecen a un ritmo cúbico.
 
 b) O(n^2)
 
-triple for loops, but only 2 of the for loops increase the units of work respect to the input
+Bucle for triple, pero solo 2 de los bucles for aumentan las unidades de trabajo respecto a la entrada.
 
 c) O(1)
 
-as the input grows, the units of work always stays the same
+A medida que la entrada crece, las unidades de trabajo siempre permanecen iguales.
 
 d) O(n^2)
 
-as the input grows, the units of work increase at a quadratic pace
+A medida que la entrada crece, las unidades de trabajo aumentan a un ritmo cuadrático.
 
 e) O(log n)
 
-as the input grows the units of work go up but not at a linear or quadratic pace.
+A medida que la entrada crece, las unidades de trabajo aumentan, pero no a un ritmo lineal ni cuadrático.
 
+## Recursos utilizados
 
-
-## Resources used
-
-Explanations:
+Explicaciones:
 https://justin.abrah.ms/computer-science/big-o-notation-explained.html
 http://stackoverflow.com/questions/107165/big-o-for-eight-year-olds?rq=1
 
-Example Code Samples reworked from here:
+Ejemplos de código reescritos desde aquí:
 http://stackoverflow.com/questions/17122807/big-o-ologn-code-example
 http://stackoverflow.com/questions/19021150/big-oh-for-n-log-n
 
-Chart/Graphics Used:
+Gráficos/Diagramas utilizados:
 https://github.com/raywenderlich/swift-algorithm-club/blob/master/Big-O%20Notation.markdown
 https://www.quora.com/How-would-you-explain-O-log-n-in-algorithms-to-1st-year-undergrad-student
 http://www.daveperrett.com/articles/2010/12/07/comp-sci-101-big-o-notation/
 
-Pop Quiz:
+Examen rápido:
 http://stackoverflow.com/questions/9223351/confused-on-big-o-notation?rq=1
