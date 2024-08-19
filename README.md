@@ -110,18 +110,18 @@ Entender la notación Big O de los algoritmos te permitirá:
 #### Ejemplo 2.1
 
 ```js
-function devolverElemento(elemento){
+function retornarElemento(elemento){
 	return elemento;
 }
 ```
 
-`devolverElemento` es una función sin sentido, pero sigue conmigo.
+`retornarElemento` es una función sin sentido, pero sigue conmigo.
 
 ```js
-devolverElemento(2);
+retornarElemento(2);
 ```
 
-El Big O de `devolverElemento` es tiempo constante. No importa qué le pasemos a `devolverElemento`, el algoritmo realizará una unidad de trabajo.
+El Big O de `retornarElemento` es tiempo constante. No importa qué le pasemos a `retornarElemento`, el algoritmo realizará una unidad de trabajo.
 
 La "complejidad" de esta función es `O(1)`.
 
@@ -131,7 +131,7 @@ Si quisieras graficar `O(1)`, deberías establecer y igual a 1 y graficarlo.
 
 ![o(1)](o_1__plot.png)
 
-Nota que cuanto más a la derecha de la horizontal (eje x) vayas, el eje vertical (eje y) permanece igual.
+Nota que por más a la derecha de la horizontal (eje x) que vayas, el eje vertical (eje y) permanece igual.
 
 ## Profundizando en O(n)
 
@@ -192,7 +192,7 @@ todasLasCombos([1,2]) -> [[1,1], [1,2], [2,1], [2,2]]. Cuatro unidades de trabaj
 
 Así que n * n es n^2.
 
-## Comparación de O(1), O(n), O(n^2)
+## Comparación de O(1), O(n) y O(n^2)
 
 Nota que cuanto más a la derecha de la horizontal (eje x) vayas, el eje vertical (eje y) sube más rápido para `O(n^2)`, más lento para `O(n)` y constante para `O(1)`.
 
@@ -203,7 +203,7 @@ Esto significa que `O(n^2)` se ejecuta más lento que `O(n)`, que se ejecuta má
 ## O(1) vs O(n) vs O(n^2) explicado sin código
 
 #### O(1)
-Considera una suma de un solo dígito con lápiz y papel. Del tipo que aprendiste cuando eras joven.
+Considera una suma de un solo dígito con lápiz y papel. Del tipo que aprendiste en la escuela.
 
 ```
 5 + 5 = 10
@@ -217,7 +217,7 @@ Considera una suma de un solo dígito con lápiz y papel. Del tipo que aprendist
 6 + 7 = 13
 ```
 
-Cada uno de esos problemas tomó la misma cantidad de operaciones para completarse (o la misma cantidad de unidades de trabajo). Tomas un número y lo sumas a otro. Listo.
+Cada uno de esos problemas tomó la misma cantidad de operaciones para completarse (o la misma cantidad de unidades de trabajo). Tomas un número, lo sumas a otro y listo.
 
 Como siempre se requiere la misma cantidad de unidades de trabajo para completarse, sin importar el problema, el Big O es constante; este es un ejemplo de `O(1)`.
 
@@ -251,7 +251,7 @@ Ahora, considera una multiplicación de varios dígitos con lápiz y papel.
 
 Esto es mucho más difícil de hacer que los dos ejemplos anteriores.
 
-Cada dígito del número inferior debe multiplicarse por cada dígito del número superior.
+Cada dígito del número a la derecha (92338) debe multiplicarse por cada dígito del número a la izquierda (55538).
 
 Si estuvieras multiplicando números de 100 dígitos entre sí, tomaría 10,000 operaciones matemáticas para completarlo (unidades de trabajo para completarlo).
 
@@ -269,7 +269,7 @@ La elección del siguiente elemento sobre el cual realizar alguna acción es una
 
 #### Ejemplo: Buscar personas en una guía telefónica es O(log(n))
 
-No necesitas revisar a todas las personas en la guía telefónica para encontrar la correcta; en su lugar, puedes aplicar un enfoque de dividir y conquistar, y solo necesitas explorar una pequeña fracción del espacio total antes de encontrar finalmente el número de teléfono de alguien.
+No necesitas revisar a todas las personas en la guía telefónica para encontrar la correcta; en su lugar, puedes aplicar un enfoque de [dividir y conquistar](https://es.wikipedia.org/wiki/Algoritmo_divide_y_vencer%C3%A1s), y solo necesitas explorar una pequeña fracción del espacio total antes de encontrar finalmente el número de teléfono de alguien. Como las guías teléfónicas vienen en orden alfabético, buscas la primera letra del nombre (habrás reducido el número a únicamente las personas con la misma inicial en su nombre), luego reduces a la segunda letra del nombre, y así hasta llegar al nombre que buscas.
 
 Por supuesto, una guía telefónica más grande aún te llevará más tiempo, pero no crecerá tan rápido como el aumento proporcional en el tamaño adicional.
 
@@ -356,7 +356,7 @@ function nlogn(n){
 }
 ```
 
-Para bucles for adyacentes, sumarías los tiempos de ejecución, por ejemplo, `O(n + m)`. Para bucles for anidados, los multiplicas, por ejemplo, `O(n*m)`, o en este caso `O(nlogn)`.
+Para bucles for adyacentes (uno después del otro), sumarías los tiempos de ejecución, por ejemplo, `O(n + m)`. Para bucles for anidados, los multiplicas, por ejemplo, `O(n*m)`, o en este caso `O(nlogn)`.
 
 Esto resultaría en:
 
@@ -440,6 +440,9 @@ La notación Big-O es una estimación y solo es útil para valores grandes de `n
 
 #### ordenamiento por inserción vs ordenamiento por mezcla
 
+[Ordenamiento por inserción - Wikipedia](https://es.wikipedia.org/wiki/Ordenamiento_por_inserci%C3%B3n)
+[Ordenamiento por mezcla - Wikipedia](https://es.wikipedia.org/wiki/Ordenamiento_por_mezcla)
+
 El tiempo de ejecución en el peor de los casos para **el algoritmo de ordenamiento por inserción es O(n^2)**.
 
 En relación con Big O, eso es peor que el tiempo de ejecución para **ordenamiento por mezcla, que es O(n log n)**.
@@ -458,7 +461,7 @@ El tiempo de ejecución promedio de los algoritmos puede variar significativamen
 
 Big-O | Nombre | Descripción
 ------| ---- | -----------
-**O(1)** | constante | **Esto es lo mejor.** El algoritmo siempre toma la misma cantidad de tiempo, sin importar cuántos datos haya. En otras palabras, el número de unidades de trabajo que toma completar el algoritmo es independiente del tamaño de la entrada. Ejemplo: buscar un elemento en un array por su índice.
+**O(1)** | constante | **Esta es la mejor.** El algoritmo siempre toma la misma cantidad de tiempo, sin importar cuántos datos haya. En otras palabras, el número de unidades de trabajo que toma completar el algoritmo es independiente del tamaño de la entrada. Ejemplo: buscar un elemento en un array por su índice.
 **O(log n)** | logarítmica | **Bastante bien.** Este tipo de algoritmos eliminan un porcentaje de la cantidad de datos a revisar con cada iteración. Si tienes 100 elementos, toma alrededor de 7 pasos encontrar la respuesta. Con 1,000 elementos, toma 10 pasos. Y con 1,000,000 elementos solo toma 20 pasos. Esto es súper rápido, incluso para grandes cantidades de datos. Ejemplo: búsqueda binaria (en un array ordenado).
 **O(n)** | lineal | **Buen rendimiento.** Si tienes 100 elementos, hace 100 unidades de trabajo. Esto suele ser el caso de un bucle. Si duplicas el tamaño de `n`, entonces el algoritmo hace 2 * n unidades de trabajo. Ejemplo: búsqueda en un array no ordenado.
 **O(n log n)** | "lineal-logarítmica" | **Rendimiento decente.** Esto es un poco peor que el rendimiento lineal, pero no está tan mal. Ejemplo: mergesort y otros algoritmos de ordenamiento "rápidos".
@@ -502,7 +505,7 @@ a)
 ```js
 function countUpA(n){
 	var count = 0;
-    for (var i = 1; i <= n; i++) {
+	for (var i = 1; i <= n; i++) {
         for (var j = n; j > 1; j--) {
             for (var k = 1; k < n; k = k + 2) {
                 count++;
@@ -598,7 +601,7 @@ e) O(log n)
 
 A medida que la entrada crece, las unidades de trabajo aumentan, pero no a un ritmo lineal ni cuadrático.
 
-## Recursos utilizados
+## Recursos utilizados (en inglés)
 
 Explicaciones:
 https://justin.abrah.ms/computer-science/big-o-notation-explained.html
