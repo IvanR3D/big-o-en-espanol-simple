@@ -3,7 +3,7 @@
 Escrito en inglés por [Pavan Katepalli](https://github.com/pavankat)
 [Ver versión original en inglés](https://github.com/pavankat/big-o-in-plain-english)
 
-Traducir al español por [Iván R. Artiles](https://github.com/ivanr3d)
+Traducido al español por [Iván R. Artiles](https://github.com/ivanr3d)
 
 Editado en inglés por 
 [Nick Bartlett](https://github.com/tteltrab)
@@ -28,16 +28,15 @@ Algoritmo que cuenta el número de vocales en una palabra y devuelve el conteo:
 function contarVocales(palabra) {
     var vocales = ['a', 'i', 'e', 'o', 'u'];
     var conteo = 0;
-		for (var i = 0; i < palabra.length; i++) {
-        for (var j = 0; j < vocales.length; j++) {
-            if (palabra[i] === vocales[j]) {
-                conteo++;
-            }
-        }
-    }
+	for (var i = 0; i < palabra.length; i++) {
+		for (var j = 0; j < vocales.length; j++) {
+			if (palabra[i] === vocales[j]) {
+				conteo++;
+			}
+		}
+	}
     return conteo;
 }
-
 ```
 
 ## ¿Cuándo las funciones no son algoritmos?
@@ -203,7 +202,7 @@ Esto significa que `O(n^2)` se ejecuta más lento que `O(n)`, que se ejecuta má
 ## O(1) vs O(n) vs O(n^2) explicado sin código
 
 #### O(1)
-Considera una suma de un solo dígito con lápiz y papel. Del tipo que aprendiste en la escuela.
+Imagina que estás sumando números de un solo dígito, como cuando aprendiste en la escuela:
 
 ```
 5 + 5 = 10
@@ -217,13 +216,13 @@ Considera una suma de un solo dígito con lápiz y papel. Del tipo que aprendist
 6 + 7 = 13
 ```
 
-Cada uno de esos problemas tomó la misma cantidad de operaciones para completarse (o la misma cantidad de unidades de trabajo). Tomas un número, lo sumas a otro y listo.
+Cada una de estas sumas requiere la misma cantidad de pasos para completarse (o la misma cantidad de unidades de trabajo). Tomas un número, lo sumas al otro, y ya está. No importa cuáles sean los números, siempre tomará el mismo tiempo y esfuerzo.
 
-Como siempre se requiere la misma cantidad de unidades de trabajo para completarse, sin importar el problema, el Big O es constante; este es un ejemplo de `O(1)`.
+Esto es lo que se conoce como `O(1)`, o tiempo constante, porque la cantidad de trabajo no cambia sin importar el tamaño del problema.
 
 #### O(n)
 
-Considera una suma de varios dígitos con lápiz y papel.
+Ahora, piensa en sumar números con más dígitos:
 
 ```
 55 + 72 = 127
@@ -235,27 +234,21 @@ Considera una suma de varios dígitos con lápiz y papel.
 4999 + 56 = 5055
 ```
 
-Observa cómo el número de operaciones (o la cantidad de unidades de trabajo necesarias para completar la operación) aumenta a medida que aumenta el número de dígitos.
+Lo que debes notar es que, a medida que los números se vuelven más grandes, tienes que hacer más pasos para sumarlos. Es decir, si uno de los números tiene más dígitos, vas a tener que hacer más operaciones, como sumar columnas y llevar números.
 
-El número de operaciones se correlaciona directamente (es uno a uno) con el número de dígitos del número más grande que se está sumando.
-
-Esto tomaría, en el peor de los casos, `O(n)` unidades de trabajo.
+El tiempo que te lleva hacer la suma depende directamente del tamaño del número más grande, por lo que el esfuerzo crece de manera proporcional a la cantidad de dígitos. Esto es lo que llamamos `O(n)`, donde "n" es el número de dígitos: cuantas más cifras tiene el número, más trabajo te costará sumarlos. Esto tomaría, en el peor de los casos, `O(n)` unidades de trabajo.
 
 #### O(n^2)
 
-Ahora, considera una multiplicación de varios dígitos con lápiz y papel.
+Finalmente, imagina multiplicar números grandes:
 
 ```
 55538 * 92338 = 5128267844
 ```
 
-Esto es mucho más difícil de hacer que los dos ejemplos anteriores.
+Este es un proceso mucho más largo que la suma. Aquí, cada dígito del número de la derecha (92338) debe multiplicarse por cada dígito del número de la izquierda (55538). Esto hace que el trabajo crezca muy rápidamente.
 
-Cada dígito del número a la derecha (92338) debe multiplicarse por cada dígito del número a la izquierda (55538).
-
-Si estuvieras multiplicando números de 100 dígitos entre sí, tomaría 10,000 operaciones matemáticas para completarlo (unidades de trabajo para completarlo).
-
-Esto tomaría, en el peor de los casos, `O(n^2)` unidades de trabajo para completarse.
+Si estuvieras multiplicando dos números de 100 dígitos cada uno, tendrías que hacer aproximadamente 10,000 operaciones. Por eso, esta operación es un ejemplo de `O(n^2)`, lo que significa que el trabajo aumenta mucho más rápido a medida que los números se hacen más grandes, porque el tiempo requerido crece con el cuadrado del número de dígitos. Esto tomaría, en el peor de los casos, `O(n^2)` unidades de trabajo para completarse.
 
 ## Profundizando en O(log(n))
 
