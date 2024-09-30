@@ -174,9 +174,10 @@ function todasLasCombos(lista){
 	var resultados = [];
 	for (var i = 0; i < lista.length; i++){
 		for (var j = 0; j < lista.length; j++){
-			resultados.push([i, j]);
+			resultados.push([ lista[i], lista[j] ]);
 		}
 	}
+	return resultados;
 }
 ```
 
